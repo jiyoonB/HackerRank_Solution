@@ -11,7 +11,9 @@ int main()
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     while(n)
-    {
+    {   
+        
+         cout << (n&1) << endl;
         if (n&1)
             count++;
         else 
