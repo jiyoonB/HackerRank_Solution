@@ -1,4 +1,6 @@
 #include <bits/stdc++.h>
+#include <limits.h>
+#include <csetjmp>
 
 using namespace std;
 
@@ -17,25 +19,19 @@ int main()
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
 
-    int max = 0, sum = 0;
+    int max = INT_MIN, sum;
 
-    for(int k = 0 ; k < 3 ; k++){
-        for(int i = 0 ; i < 3 ; i++){
-            for(int j = 0 ; j < 3 ; j++){
-                if (j == 1){
-                    sum += arr[i+k][j+k];
-                    break;    
-                }
-                sum += arr[i+k][j+k];
-            }
-            if(max < sum){
-                    max = sum;
-                    sum = 0;
-                }
+    for(int i = 0 ; i < 4 ; i++){
+        sum = 0;
+        for(int j = 0 ; j < 4 ; j++){
+            sum = arr[i][j] + arr[i][j+1] + arr[i][j+2] 
+            + arr[i+1][j+1] 
+            + arr[i+2][j] + arr[i+2][j+1] + arr[i+2][j+2];
+
+            if(max < sum)   max = sum;
         }
     }
     
-
     cout << max;
 
     return 0;
